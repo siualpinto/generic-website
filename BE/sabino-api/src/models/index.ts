@@ -1,7 +1,7 @@
 import mongoose, { model } from "mongoose";
-import productSchema, { Product } from "./product";
-import clientSchema, { Client } from "./client";
-import config from "../../config";
+import productSchema, { Product } from "./product.js";
+import clientSchema, { Client } from "./client.js";
+import config from "../../config/index.js";
 
 export const Products = model<Product>("Product", productSchema);
 export const Clients = model<Client>("Client", clientSchema);

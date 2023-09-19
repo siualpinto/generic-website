@@ -7,19 +7,22 @@
   "scripts": {
     "clean": "rm -rf dist",
     "compile": "tsc",
-    "start": "npm run compile && node ./dist/index.js"
+    "start": "npm run compile && node ./dist/index.js",
+    "startTs": "npm run compile && ts-node ./src/index.ts",
+    "dev": "nodemon --exec 'ts-node --cache-directory .tscache' ./index.ts",
+    "start2": "ts-node --esm src/index.ts",
+    "start3": "nodemon src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@apollo/server": "^4.9.3",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "graphql": "^16.8.0",
     "mongodb": "^6.1.0",
     "mongoose": "^7.5.2",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@types/node": "^20.6.2",

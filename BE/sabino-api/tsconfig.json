@@ -4,11 +4,16 @@
     "outDir": "dist",
     "lib": ["es2020"],
     "target": "es2020",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "esModuleInterop": true,
     "types": ["node"],
     "baseUrl": ".",
+    "sourceMap": true    
+  },
+  "ts-node": {
+    // Tell ts-node CLI to install the --loader automatically
+    "esm": true
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"],
   "exclude": ["node_modules", ".vscode"],
