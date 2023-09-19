@@ -6,7 +6,7 @@ import config from "../../config";
 export const Products = model<Product>("Product", productSchema);
 export const Clients = model<Client>("Client", clientSchema);
 
-export async function startMongooseAsync(): Promise<void> {
+export default async function startMongooseAsync(): Promise<void> {
   /**
    * Connecting Mongoose
    */

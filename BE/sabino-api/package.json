@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "clean": "rm -rf dist",
     "compile": "tsc",
     "start": "npm run compile && node ./dist/index.js"
   },
