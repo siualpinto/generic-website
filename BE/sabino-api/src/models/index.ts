@@ -11,7 +11,6 @@ export default async function startMongooseAsync(): Promise<void> {
    * Connecting Mongoose
    */
   mongoose.connect(config.db, {
-    keepAlive: true,
     socketTimeoutMS: 0,
   });
 
