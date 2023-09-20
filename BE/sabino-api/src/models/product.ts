@@ -1,9 +1,12 @@
-import { Schema, Types } from "mongoose";
+import { UUID, randomUUID } from "crypto";
+import { Schema } from "mongoose";
 
 export interface Product {
-  id: string;
+  id: UUID;
   name: string;
   type: ProductType;
+  createdDate: Date;
+  updatedDate: Date;
 }
 
 export enum ProductType {
@@ -13,9 +16,11 @@ export enum ProductType {
 }
 
 const productSchema = new Schema<Product>({
-  id: Types.ObjectId,
+  id: { type: String, default: () => randomUUID(), required: true },
   name: { type: String, required: true },
   type: { type: String, enum: ProductType, required: true },
+  createdDate: { type: Date, default: () => new Date(), required: true },
+  updatedDate: { type: Date, default: () => new Date(), required: true },
 });
 
 export default productSchema;
