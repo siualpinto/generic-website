@@ -5,6 +5,10 @@ export default function startExpressServer() {
   const app = express();
   const port = process.env.PORT || 3000;
   app.use(express.json());
+  app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send("Something broke!");
+  });
   configureRoutes(app);
   app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
