@@ -2,6 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type { IProduct2 } from './models/IProduct2';
+export type { ProductReadDto } from './models/ProductReadDto';
+export { ProductType } from './models/ProductType';
+export type { UUID } from './models/UUID';
 
 export { DefaultGenerated } from './interfaces/DefaultGenerated';
