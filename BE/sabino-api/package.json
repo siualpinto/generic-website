@@ -41,7 +41,6 @@
     "concurrently": "^8.2.1",
     "eslint": "^8.49.0",
     "nodemon": "^3.0.1",
-    "openapi-express-codegen": "^1.0.8",
     "typescript": "^5.2.2"
   }
 }

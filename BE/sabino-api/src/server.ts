@@ -13,22 +13,7 @@ export default function startExpressServer() {
     res.status(500).send("Something broke!");
   });
 
-  // var whitelist = ['http://localhost:3000/', 'http://localhost:3000']
-  // var corsOptions = {
-  //   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  //   origin: function (origin, callback) {
-  //     if (whitelist.indexOf(origin) !== -1) {
-  //       callback(null, true)
-  //     } else {
-  //       callback(new Error('Not allowed by CORS'))
-  //     }
-  //   }
-  // }
-
-  var corsOptions = {
-    origin: "http://localhost:3000",
-  };
-  app.use(cors(corsOptions));
+  configureCors(app);
   app.use(express.json()); //built-in middleware to parse the request body
   app.use(morgan("tiny")); //used to logs the requests
   app.use(express.static("public")); //built-in middleware used to serve the static files
@@ -45,6 +30,13 @@ export default function startExpressServer() {
   app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
   });
+}
+
+function configureCors(app) {
+  var corsOptions = {
+    origin: "http://localhost:3000",
+  };
+  app.use(cors(corsOptions));
 }
 
 function configureRoutes(app) {
