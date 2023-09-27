@@ -14,7 +14,7 @@ export class Product implements IProduct {
 }
 
 export interface IProduct {
-  id: string;
+  id: UUID;
   name: string;
   type: ProductType;
   createdDate: Date;
@@ -29,7 +29,6 @@ export enum ProductType {
 
 const productSchema = new Schema(
   {
-    // id: { type: String, default: () => randomUUID(), required: true },
     _id: { type: "UUID", required: true },
     name: { type: String, required: true },
     type: { type: String, enum: ProductType, required: true },
@@ -44,7 +43,8 @@ const productSchema = new Schema(
     },
   }
 );
-
+productSchema.set("toObject", { getters: true });
+productSchema.set("toJSON", { getters: true });
 productSchema.pre("updateOne", function () {
   this.set({ updatedDate: new Date() });
 });

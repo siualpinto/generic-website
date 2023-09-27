@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import productsRoutes from "./routes/products/product.js";
+import morgan from "morgan";
 
 export default function startExpressServer() {
   const app = express();
@@ -9,6 +10,8 @@ export default function startExpressServer() {
     console.error(err.stack);
     res.status(500).send("Something broke!");
   });
+  app.use(express.json());
+  app.use(morgan("tiny"));
   configureRoutes(app);
   app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

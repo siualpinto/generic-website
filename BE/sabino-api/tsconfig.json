@@ -9,7 +9,9 @@
     "esModuleInterop": true,
     "types": ["node"],
     "baseUrl": ".",
-    "sourceMap": true    
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true    
   },
   "ts-node": {
     "esm": true
