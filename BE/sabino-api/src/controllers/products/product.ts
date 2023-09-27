@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import { DbProduct } from "../../models/index.js";
-import { IProduct } from "src/models/product.js";
+import { IProduct, ProductType } from "src/models/product.js";
+import { Controller, Get, Route } from "tsoa";
+import { UUID } from "crypto";
 
 export async function getProductsAsync(req: Request, res: Response) {
   var products = await DbProduct.find();
@@ -8,8 +10,17 @@ export async function getProductsAsync(req: Request, res: Response) {
   return res.json(products);
 }
 
-export default class PingController {
-  public async getProductsAsync(): Promise<Array<IProduct>> {
+export interface IProduct2 {
+  id: string;
+  name: string;
+  createdDate: Date;
+  updatedDate: Date;
+}
+
+@Route("products")
+export default class ProductController extends Controller {
+  @Get("/")
+  public async getProductsAsync(): Promise<Array<IProduct2>> {
     var products = await DbProduct.find();
     return products;
   }

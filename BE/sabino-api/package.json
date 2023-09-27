@@ -5,9 +5,12 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "predev": "npm run swagger",
+    "prebuild": "npm run swagger",
+    "swagger": "tsoa spec",
     "compile": "tsc",
     "start": "npm run compile && ts-node src/index.ts",
-    "startAutoReload": "nodemon src/index.ts",
+    "startAutoReload": "concurrently \"nodemon src/index.ts\" \"nodemon -x tsoa spec\"",
     "serve": "node dist/index.js",
     "generate": "express-gen --input ./spec.json --output ./generated"
   },
