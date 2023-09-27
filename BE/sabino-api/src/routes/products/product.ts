@@ -1,12 +1,10 @@
 import { Router } from "express";
-import { ProductController, createProductAsync, getProductsAsync } from "../../api/controllers/productsController.js";
+import { ProductController, createProductAsync } from "../../api/controllers/productsController.js";
 
 const productsRoutes = Router();
 
-// productsRoutes.get("/", getProductsAsync);
 productsRoutes.get("/", async (_req, res) => {
-  const controller = new ProductController();
-  const response = await controller.getProductsAsync();
+  const response = await new ProductController().getProductsAsync();
   return res.send(response);
 });
 productsRoutes.post("/", createProductAsync);

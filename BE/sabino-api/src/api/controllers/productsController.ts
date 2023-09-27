@@ -3,12 +3,6 @@ import { DbProduct } from "../../models/index.js";
 import { Controller, Get, Route } from "tsoa";
 import { ProductReadDto } from "../dtos/productReadDto.js";
 
-export async function getProductsAsync(req: Request, res: Response) {
-  var products = await DbProduct.find();
-  // console.log(products);
-  return res.json(products);
-}
-
 @Route("products")
 export class ProductController extends Controller {
   @Get("/")
