@@ -1,5 +1,5 @@
 import { Router } from "express";
-import ProductController, { createProductAsync, getProductsAsync } from "../../controllers/products/product.js";
+import { ProductController, createProductAsync, getProductsAsync } from "../../api/controllers/productsController.js";
 
 const productsRoutes = Router();
 

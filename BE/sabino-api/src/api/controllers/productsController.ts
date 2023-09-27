@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
 import { DbProduct } from "../../models/index.js";
-import { IProduct, ProductType } from "src/models/product.js";
 import { Controller, Get, Route } from "tsoa";
-import { UUID } from "crypto";
+import { ProductReadDto } from "../dtos/productReadDto.js";
 
 export async function getProductsAsync(req: Request, res: Response) {
   var products = await DbProduct.find();
@@ -10,17 +9,10 @@ export async function getProductsAsync(req: Request, res: Response) {
   return res.json(products);
 }
 
-export interface IProduct2 {
-  id: string;
-  name: string;
-  createdDate: Date;
-  updatedDate: Date;
-}
-
 @Route("products")
-export default class ProductController extends Controller {
+export class ProductController extends Controller {
   @Get("/")
-  public async getProductsAsync(): Promise<Array<IProduct2>> {
+  public async getProductsAsync(): Promise<Array<ProductReadDto>> {
     var products = await DbProduct.find();
     return products;
   }

@@ -6,13 +6,30 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
-			"IProduct2": {
+			"UUID": {
+				"type": "string",
+				"format": "uuid",
+				"description": "Stringified UUIDv4.\r\nSee [RFC 4112](https://tools.ietf.org/html/rfc4122)",
+				"pattern": "[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}"
+			},
+			"ProductType": {
+				"enum": [
+					"Unknown",
+					"Wood",
+					"Steel"
+				],
+				"type": "string"
+			},
+			"ProductReadDto": {
 				"properties": {
 					"id": {
-						"type": "string"
+						"$ref": "#/components/schemas/UUID"
 					},
 					"name": {
 						"type": "string"
+					},
+					"type": {
+						"$ref": "#/components/schemas/ProductType"
 					},
 					"createdDate": {
 						"type": "string",
@@ -26,6 +43,7 @@
 				"required": [
 					"id",
 					"name",
+					"type",
 					"createdDate",
 					"updatedDate"
 				],
@@ -55,7 +73,7 @@
 							"application/json": {
 								"schema": {
 									"items": {
-										"$ref": "#/components/schemas/IProduct2"
+										"$ref": "#/components/schemas/ProductReadDto"
 									},
 									"type": "array"
 								}

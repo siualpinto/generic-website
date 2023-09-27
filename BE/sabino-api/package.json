@@ -7,10 +7,11 @@
   "scripts": {
     "predev": "npm run swagger",
     "prebuild": "npm run swagger",
-    "swagger": "tsoa spec",
+    "swagger": "tsoa spec-and-routes",
     "compile": "tsc",
     "start": "npm run compile && ts-node src/index.ts",
-    "startAutoReload": "concurrently \"nodemon src/index.ts\" \"nodemon -x tsoa spec\"",
+    "startAutoReload": "nodemon src/index.ts",
+    "startAutoReload2": "concurrently \"nodemon src/index.ts\" \"nodemon -x tsoa spec-and-routes\"",
     "serve": "node dist/index.js",
     "generate": "express-gen --input ./spec.json --output ./generated"
   },
