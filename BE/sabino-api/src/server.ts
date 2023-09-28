@@ -19,7 +19,7 @@ export default function startExpressServer() {
 }
 
 function configureMiddlewares(app: Express) {
-  app.use((err, req, res, next) => {
+  app.use((err: any, req: any, res: any, next: any) => {
     console.error(err.stack);
     res.status(500).send("Something broke!");
   });

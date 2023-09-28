@@ -3,10 +3,10 @@ import { Schema } from "mongoose";
 
 export class Product implements IProduct {
   id: UUID;
-  name: string;
-  type: ProductType;
-  createdDate: Date;
-  updatedDate: Date;
+  name!: string;
+  type!: ProductType;
+  createdDate!: Date;
+  updatedDate!: Date;
 
   constructor() {
     this.id = randomUUID();
