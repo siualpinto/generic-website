@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "npx @openapitools/openapi-generator-cli generate -i http://localhost:8000/swagger.json -g typescript-fetch -o ./apiDefinitions/",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
