@@ -59,7 +59,9 @@
 		"license": {
 			"name": "ISC"
 		},
-		"contact": {}
+		"contact": {
+			"name": "Academia do Empresário"
+		}
 	},
 	"openapi": "3.0.0",
 	"paths": {

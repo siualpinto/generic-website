@@ -32,6 +32,5 @@ async function populateDbAsync() {
   let p: Product = new Product();
   p.name = "asd";
   p.type = ProductType.Steel;
-  console.log(p);
   await DbProduct.create(p);
 }
