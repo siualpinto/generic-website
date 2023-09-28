@@ -1,9 +1,9 @@
 import express, { Request, Response, Router } from "express";
-import productsRoutes from "./routes/products/product.js";
 import morgan from "morgan";
 import cors from "cors";
 import { Express } from "express-serve-static-core";
 import swaggerUi from "swagger-ui-express";
+import productsRoutes from "./routes/products/product.js";
 
 export default function startExpressServer() {
   const app = express();

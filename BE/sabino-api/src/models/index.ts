@@ -8,7 +8,7 @@ export const DbProduct = model<IProduct>("Product", productSchema);
 export const DbClient = model<Client>("Client", clientSchema);
 
 export default async function startMongooseAsync(): Promise<void> {
-  await mongoose.connect(config.db, { appName: "Sabino Express js app", dbName: config.dbName });
+  await mongoose.connect(config.db!, { appName: "Sabino Express js app", dbName: config.dbName });
   mongoose.connection.on("error", () => {
     throw new Error(`unable to connect to database: ${config.db}`);
   });

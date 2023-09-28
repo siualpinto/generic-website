@@ -1,18 +1,21 @@
 {
   "compilerOptions": {
-    "rootDirs": ["src"],
+    "target": "ES2022",
+    "lib": ["ES2022"],
     "outDir": "dist",
-    "lib": ["es2020"],
-    "target": "es2020",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "esModuleInterop": true,
-    "types": ["node"],
+    "types": ["node", "express"],
     "baseUrl": ".",
     "strict": true,
+    "allowJs": false,
     "sourceMap": true,
+    "useDefineForClassFields": true,
+    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true    
+    "emitDecoratorMetadata": true,
+    "rootDirs": ["src"],
   },
   "ts-node": {
     "esm": true
