@@ -37,7 +37,7 @@ function configureCors(app: Express) {
 
 function configureRoutes(app: Express) {
   app.get("/api", (req: Request, res: Response) => {
-    res.send("HSabino API");
+    res.send("Sabino API");
   });
   app.use("/api/products", productsRoutes);
 }

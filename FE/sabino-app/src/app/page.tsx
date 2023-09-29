@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { DefaultApi } from "../../apiDefinitions";
+import { DefaultApi, ProductReadDto } from "../../apiDefinitions";
 
 export default function Home() {
   const [todos, settodos] = useState("");
@@ -12,7 +12,7 @@ export default function Home() {
     const response = await fetch("http://localhost:8000/api/products");
     // const data = await response.json();
     // settodos(data[0].id);
-    const data = await new DefaultApi().getProductsAsync();
+    const data: ProductReadDto[] = await new DefaultApi().getProductsAsync();
     console.log(data);
   };
 

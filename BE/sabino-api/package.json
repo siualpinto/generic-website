@@ -5,11 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "swagger": "tsoa spec",
+    "swagger": "tsoa spec --basePath /api",
     "prebuild": "npm run swagger",
     "build": "tsc",
     "start": "npm run build && ts-node src/index.ts",
-    "dev": "concurrently \"mongorunner\" \"nodemon -x tsoa spec\" \"nodemon src/index.ts\" ",
+    "dev": "concurrently \"mongorunner\" \"nodemon -x npm run swagger\" \"nodemon src/index.ts\" ",
     "serve": "node dist/index.js"
   },
   "keywords": [],
