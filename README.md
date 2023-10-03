@@ -6,9 +6,16 @@
 
 
 #### How to run the BackEnd
+* install mongodb community server by following: https://www.mongodb.com/try/download/community
+* open a terminal window
+* go to (cd): BE/generic-api
+* on the first run install the dependencies by running the following command: 
+                npm install
+* start the server by running the following command: 
+                npm run dev
+* the application backend will be accessible at http://localhost:8000/api/
 
-You will need .net installed: https://dotnet.microsoft.com/en-us/download/dotnet?cid=getdotnetcorecli
-and a local MongoDb. For that install MongoRunner (`dotnet tool install --global MongoRunner --version 2022.01.06`)
+
 
 
 

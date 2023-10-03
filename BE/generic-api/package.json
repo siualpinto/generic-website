@@ -9,7 +9,7 @@
     "prebuild": "npm run swagger",
     "build": "tsc",
     "start": "npm run build && ts-node src/index.ts",
-    "dev": "concurrently \"mongorunner\" \"nodemon -x npm run swagger\" \"nodemon src/index.ts\" ",
+    "dev": "concurrently \"npm mongodb-runner start\" \"nodemon -x npm run swagger\" \"nodemon src/index.ts\" ",
     "serve": "node dist/index.js"
   },
   "keywords": [],
@@ -37,6 +37,7 @@
     "concurrently": "^8.2.1",
     "eslint": "^8.49.0",
     "nodemon": "^3.0.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "mongodb-runner": "5.4.4"
   }
 }

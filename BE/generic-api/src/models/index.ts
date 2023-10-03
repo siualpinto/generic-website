@@ -29,8 +29,20 @@ async function populateDbAsync() {
     id: randomUUID(),
   });
   await initialProduct.save();
+  
   let p: Product = new Product();
   p.name = "asd";
   p.type = ProductType.Steel;
   await DbProduct.create(p);
+
+  await createTestProduct();
 }
+
+async function createTestProduct() {
+  let testProduct: Product = new Product();
+  testProduct.name = "new product";
+  testProduct.type = ProductType.Steel;
+
+  await DbProduct.create(testProduct);
+}
+
