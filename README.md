@@ -6,6 +6,7 @@
 
 
 #### How to run the BackEnd
+* install nodejs by following: https://nodejs.org/en
 * install mongodb community server by following: https://www.mongodb.com/try/download/community
 * open a terminal window
 * go to (cd): BE/generic-api
