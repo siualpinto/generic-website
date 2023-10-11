@@ -4,6 +4,7 @@ import cors from "cors";
 import { Express } from "express-serve-static-core";
 import swaggerUi from "swagger-ui-express";
 import productsRoutes from "./routes/products/product.js";
+import authRoutes from "./auth/controller/authController.js";
 
 export default function startExpressServer() {
   const app = express();
@@ -40,6 +41,7 @@ function configureRoutes(app: Express) {
     res.send("Sabino API");
   });
   app.use("/api/products", productsRoutes);
+  app.use("/api/auth", authRoutes)
 }
 
 function configureSwagger(app: Express) {

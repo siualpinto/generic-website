@@ -3,9 +3,11 @@ import productSchema, { IProduct, Product, ProductType } from "./product.js";
 import clientSchema, { Client } from "./client.js";
 import config from "../../config/index.js";
 import { randomUUID } from "crypto";
+import userSchema, { User } from "../auth/model/user.js";
 
 export const DbProduct = model<IProduct>("Product", productSchema);
 export const DbClient = model<Client>("Client", clientSchema);
+export const DbUser = model<User>("User", userSchema);
 
 export default async function startMongooseAsync(): Promise<void> {
   await mongoose.connect(config.db!, { appName: "Sabino Express js app", dbName: config.dbName });
@@ -20,6 +22,7 @@ export default async function startMongooseAsync(): Promise<void> {
 async function clearDbAsync() {
   await DbProduct.deleteMany();
   await DbClient.deleteMany();
+  await DbUser.deleteMany();
 }
 
 async function populateDbAsync() {
@@ -36,6 +39,8 @@ async function populateDbAsync() {
   await DbProduct.create(p);
 
   await createTestProduct();
+  await createTestUser();
+  
 }
 
 async function createTestProduct() {
@@ -44,5 +49,11 @@ async function createTestProduct() {
   testProduct.type = ProductType.Steel;
 
   await DbProduct.create(testProduct);
+}
+
+async function createTestUser() {
+  let testUser: User = new User("AlcinoSousa", "basic", "testpassword");
+
+  await DbUser.create(testUser);
 }
 
