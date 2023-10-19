@@ -6,6 +6,7 @@ import swaggerUi from "swagger-ui-express";
 import productsRoutes from "./routes/products/product.js";
 import authRoutes from "./auth/controller/authController.js";
 
+
 export default function startExpressServer() {
   const app = express();
   const port = process.env.PORT || 8000;
@@ -14,6 +15,8 @@ export default function startExpressServer() {
   configureCors(app);
   configureRoutes(app);
   configureSwagger(app);
+
+  const cookieParser = require("cookie-parser");
   app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
   });
@@ -37,10 +40,12 @@ function configureCors(app: Express) {
 }
 
 function configureRoutes(app: Express) {
-  app.get("/api", (req: Request, res: Response) => {
+  const { adminAuth } = require("./auth/middleware/auth.js");
+
+  app.get("/api",(req: Request, res: Response) => {
     res.send("Sabino API");
   });
-  app.use("/api/products", productsRoutes);
+  app.use("/api/products", adminAuth, productsRoutes);
   app.use("/api/auth", authRoutes)
 }
 

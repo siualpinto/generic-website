@@ -1,7 +1,12 @@
 import { DbUser, User } from "../model/user.js";
 import { Router } from "express";
 
+const jwt = require('jsonwebtoken')
+
+const jwtSecret = '2a5bb92fa44b6fad7bfc55200ae27a36237250ca08daae06183a2201a42dde99fc8cb2';
+
 const authRoutes = Router();
+
 
 // TODO add JWT
 // TODO proxy to check JWT 
@@ -28,6 +33,18 @@ authRoutes.post("/login", async (req: any, res: any, next: any) => {
           error: "User not found",
         })
       } else {
+        const maxAge = 3 * 60 * 60;
+        const token = jwt.sign(
+          { id: user._id, username, role: user.role },
+          jwtSecret,
+          {
+            expiresIn: maxAge, // 3hrs in sec
+          }
+        );
+        res.cookie("jwt", token, {
+          httpOnly: true,
+          maxAge: maxAge * 1000, // 3hrs in ms
+        });
         res.status(200).json({
           message: "Login successful",
           user,
