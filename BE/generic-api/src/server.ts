@@ -5,7 +5,7 @@ import { Express } from "express-serve-static-core";
 import swaggerUi from "swagger-ui-express";
 import productsRoutes from "./routes/products/product.js";
 import authRoutes from "./auth/controller/authController.js";
-import { adminAuth } from "./auth/middleware/auth.js";
+import { checkAuth } from "./auth/middleware/auth.js";
 
 
 import { createRequire } from "module";
@@ -47,12 +47,8 @@ function configureCors(app: Express) {
 }
 
 function configureRoutes(app: Express) {
-
-  app.get("/api",(req: Request, res: Response) => {
-    res.send("Sabino API");
-  });
-  app.use("/api/products", adminAuth, productsRoutes);
   app.use("/api/auth", authRoutes)
+  app.use("/api/products", checkAuth, productsRoutes);
 }
 
 function configureSwagger(app: Express) {
