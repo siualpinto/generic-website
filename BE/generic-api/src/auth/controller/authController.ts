@@ -1,5 +1,7 @@
 import { DbUser, User } from "../model/user.js";
 import { Router } from "express";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 
 const jwt = require('jsonwebtoken')
 

@@ -5,7 +5,13 @@ import { Express } from "express-serve-static-core";
 import swaggerUi from "swagger-ui-express";
 import productsRoutes from "./routes/products/product.js";
 import authRoutes from "./auth/controller/authController.js";
+import { adminAuth } from "./auth/middleware/auth.js";
 
+
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
+const cookieParser = require("cookie-parser");
 
 export default function startExpressServer() {
   const app = express();
@@ -16,7 +22,7 @@ export default function startExpressServer() {
   configureRoutes(app);
   configureSwagger(app);
 
-  const cookieParser = require("cookie-parser");
+  
   app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
   });
@@ -30,6 +36,7 @@ function configureMiddlewares(app: Express) {
   app.use(express.json()); //built-in middleware to parse the request body
   app.use(morgan("tiny")); //used to logs the requests
   app.use(express.static("public")); //built-in middleware used to serve the static files
+  app.use(cookieParser());
 }
 
 function configureCors(app: Express) {
@@ -40,7 +47,6 @@ function configureCors(app: Express) {
 }
 
 function configureRoutes(app: Express) {
-  const { adminAuth } = require("./auth/middleware/auth.js");
 
   app.get("/api",(req: Request, res: Response) => {
     res.send("Sabino API");
